@@ -1,0 +1,113 @@
+package rectangle;
+
+import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+
+public class rectangleTest {
+	
+	@BeforeAll
+	static public void setup() {
+		System.out.println("Setup for test complete.");
+	}
+	
+	@AfterAll
+	static public void complete() {
+		System.out.println("Test complete.");
+	}
+	
+	@Test
+	public void test1() {
+		rectangle rectangle = new rectangle();
+		assertEquals(0, rectangle.getH());
+		assertEquals(0, rectangle.getW());
+		System.out.println("Test 1 completed successfully.");
+	}
+	
+	@Test
+	public void test2() {
+		rectangle rectangle = new rectangle();
+		assertEquals(0, rectangle.getH());
+		assertEquals(0, rectangle.getW());
+		assertEquals(0, rectangle.getA());
+		System.out.println("Test 2 completed successfully.");
+	}
+	
+	@Test
+	public void test3() {
+		rectangle rectangle = new rectangle(10, 20);
+		assertEquals(10, rectangle.getH());
+		assertEquals(20, rectangle.getW());
+		assertEquals(200, rectangle.getA());
+		System.out.println("Test 3 completed successfully.");
+	}
+	
+	@Test
+	public void test4() {
+		rectangle[] rectangles = new rectangle[5];
+		rectangles[0] = new rectangle();
+		rectangles[1] = new rectangle(2, 3);
+		rectangles[2] = new rectangle(4, 6);
+		rectangles[3] = new rectangle(6, 9);
+		rectangles[4] = new rectangle(8, 12);
+		
+		String[] expectedResults = {
+				"height is 0, width is 0, area is 0",
+				"height is 2, width is 3, area is 6",
+				"height is 4, width is 6, area is 24",
+				"height is 6, width is 9, area is 64",
+				"height is 8, width is 12, area is 96"
+		};
+		for (int i = 0; i < rectangles.length; i++) {
+			String result = "Test " + (i + 1) + ": ";
+			result += "height is " + rectangles[i].getH() + ", ";
+			result += "width is " + rectangles[i].getW() + ", ";
+			result += "area is " + rectangles[i].getA() + ", ";
+		}
+		System.out.println("Test 4 completed successfully.");
+	}
+	
+	@Test 
+	public void test5() { 
+		rectangle[] rectangles = new rectangle[5]; 
+		rectangles[0] = new rectangle(); 
+		rectangles[1] = new rectangle(11, 7); 
+		rectangles[2] = new rectangle(22, 14); 
+		rectangles[3] = new rectangle(33, 21); 
+		rectangles[4] = new rectangle(44, 28); 
+		
+		int[] expectedHeights = {0, 11, 22, 33, 44}; 
+		int[] expectedWidths = {0, 7, 14, 21, 28}; 
+		int[] expectedAreas = {0, 77, 308, 693, 1232}; 
+		
+		for (int i = 0; i < rectangles.length; i++) { 
+			assertEquals(expectedHeights[i], rectangles[i].getH()); 
+			assertEquals(expectedWidths[i], rectangles[i].getW()); 
+			assertEquals(expectedAreas[i], rectangles[i].getA()); 
+			
+			if (rectangles[i].getH() % 11 != 0) { 
+				fail("Height is not a multiple of 11."); 
+				} 
+			if (rectangles[i].getW() % 7 != 0) { 
+				fail("Width is not a multiple of 7."); 
+				} 
+			} 
+		System.out.println("Test 5 completed successfully."); 
+	}
+	
+	@Test
+	public void test6() {
+		rectangle[] rectangles = new rectangle[5]; 
+		rectangles[0] = new rectangle(); 
+		rectangles[1] = new rectangle(11, 7); 
+		rectangles[2] = new rectangle(22, 14); 
+		rectangles[3] = new rectangle(33, 21); 
+		rectangles[4] = new rectangle(44, 28); 
+		
+		for (rectangle rectangle : rectangles) { 
+			System.out.println(rectangle.toString()); 
+			} 
+		System.out.println("Test 6 completed successfully.");
+	}
+
+}
